@@ -189,7 +189,7 @@ class Weight(models.Model):
 
     def clean(self):
         if not self.material.check_allowed_rate(self.rate_per_unit):
-            raise ValidationError("Rate maust be {} rs less or more than {}".format(self.material.rate_gap, self.material.default_rate))
+            raise ValidationError("Rate must be between {} and {}".format(self.material.down_rate, self.material.up_rate))
 
 
 def assign_rate_per_unit(sender, instance, *args, **kwargs):
